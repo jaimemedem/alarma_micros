@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  C:\Users\medem\MPLABXProjects\PROYECTOFINAL_MICROS.X\main_pruebaServo.c

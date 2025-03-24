@@ -6,5 +6,5 @@
 CND_BASEDIR=`pwd`
 # default configuration
 CND_ARTIFACT_DIR_default=dist/default/production
-CND_ARTIFACT_NAME_default=PROYECTOFINAL_MICROS.X.production.hex
-CND_ARTIFACT_PATH_default=dist/default/production/PROYECTOFINAL_MICROS.X.production.hex
+CND_ARTIFACT_NAME_default=alarma_micros.production.hex
+CND_ARTIFACT_PATH_default=dist/default/production/alarma_micros.production.hex

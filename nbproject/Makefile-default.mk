@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Servo.c Pic32Ini.c UartCol.c main_pruebaUART.c
+SOURCEFILES_QUOTED_IF_SPACED=Servo.c Pic32Ini.c UartCol.c main_pruebaUART.c Temporizador.c mainpruebaArmado.c Pir.c buzzer.c teclado.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/main_pruebaUART.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Servo.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/UartCol.o.d ${OBJECTDIR}/main_pruebaUART.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/main_pruebaUART.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/mainpruebaArmado.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Servo.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/UartCol.o.d ${OBJECTDIR}/main_pruebaUART.o.d ${OBJECTDIR}/Temporizador.o.d ${OBJECTDIR}/mainpruebaArmado.o.d ${OBJECTDIR}/Pir.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/teclado.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/main_pruebaUART.o
+OBJECTFILES=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/main_pruebaUART.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/mainpruebaArmado.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o
 
 # Source Files
-SOURCEFILES=Servo.c Pic32Ini.c UartCol.c main_pruebaUART.c
+SOURCEFILES=Servo.c Pic32Ini.c UartCol.c main_pruebaUART.c Temporizador.c mainpruebaArmado.c Pir.c buzzer.c teclado.c
 
 
 
@@ -125,6 +125,36 @@ ${OBJECTDIR}/main_pruebaUART.o: main_pruebaUART.c  .generated_files/flags/defaul
 	@${RM} ${OBJECTDIR}/main_pruebaUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaUART.o.d" -o ${OBJECTDIR}/main_pruebaUART.o main_pruebaUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/Temporizador.o: Temporizador.c  .generated_files/flags/default/8b16dd69ae9f5a584f930cb120e3ddad2a108a1 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Temporizador.o.d 
+	@${RM} ${OBJECTDIR}/Temporizador.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Temporizador.o.d" -o ${OBJECTDIR}/Temporizador.o Temporizador.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/mainpruebaArmado.o: mainpruebaArmado.c  .generated_files/flags/default/580dda3f0661063f258e67ab878df40828234bfa .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mainpruebaArmado.o.d 
+	@${RM} ${OBJECTDIR}/mainpruebaArmado.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/mainpruebaArmado.o.d" -o ${OBJECTDIR}/mainpruebaArmado.o mainpruebaArmado.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/Pir.o: Pir.c  .generated_files/flags/default/aa4ffb056c39b3e9246405b484e3f03d23788e18 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Pir.o.d 
+	@${RM} ${OBJECTDIR}/Pir.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Pir.o.d" -o ${OBJECTDIR}/Pir.o Pir.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/buzzer.o: buzzer.c  .generated_files/flags/default/455b679d5abb2d39ac5d5fe6ca06827a6f096e1c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/buzzer.o.d 
+	@${RM} ${OBJECTDIR}/buzzer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/buzzer.o.d" -o ${OBJECTDIR}/buzzer.o buzzer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/teclado.o: teclado.c  .generated_files/flags/default/9422c98b40146c9abedc5bfa03ce3e4bff5add29 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/teclado.o.d 
+	@${RM} ${OBJECTDIR}/teclado.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/teclado.o.d" -o ${OBJECTDIR}/teclado.o teclado.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/Servo.o: Servo.c  .generated_files/flags/default/24d9f870f7ebae17ea38b39859e12f0f50b248fd .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -149,6 +179,36 @@ ${OBJECTDIR}/main_pruebaUART.o: main_pruebaUART.c  .generated_files/flags/defaul
 	@${RM} ${OBJECTDIR}/main_pruebaUART.o.d 
 	@${RM} ${OBJECTDIR}/main_pruebaUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaUART.o.d" -o ${OBJECTDIR}/main_pruebaUART.o main_pruebaUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/Temporizador.o: Temporizador.c  .generated_files/flags/default/84b22b59c847bfa52e84747dd2c746ee3d329801 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Temporizador.o.d 
+	@${RM} ${OBJECTDIR}/Temporizador.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Temporizador.o.d" -o ${OBJECTDIR}/Temporizador.o Temporizador.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/mainpruebaArmado.o: mainpruebaArmado.c  .generated_files/flags/default/722bdf51a4c2683ca0933ef392fa9b967f2393ae .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mainpruebaArmado.o.d 
+	@${RM} ${OBJECTDIR}/mainpruebaArmado.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/mainpruebaArmado.o.d" -o ${OBJECTDIR}/mainpruebaArmado.o mainpruebaArmado.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/Pir.o: Pir.c  .generated_files/flags/default/6569ffb1c9ec4ebff73833fa275485af4e70870e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Pir.o.d 
+	@${RM} ${OBJECTDIR}/Pir.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Pir.o.d" -o ${OBJECTDIR}/Pir.o Pir.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/buzzer.o: buzzer.c  .generated_files/flags/default/8048d14a7248bbe7c64bdcd398b91a765eb9e7e2 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/buzzer.o.d 
+	@${RM} ${OBJECTDIR}/buzzer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/buzzer.o.d" -o ${OBJECTDIR}/buzzer.o buzzer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/teclado.o: teclado.c  .generated_files/flags/default/503db60b3108c6cb784e1e21e13f93f61c487f78 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/teclado.o.d 
+	@${RM} ${OBJECTDIR}/teclado.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/teclado.o.d" -o ${OBJECTDIR}/teclado.o teclado.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

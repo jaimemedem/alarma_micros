@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/production/alarma_micros.production.elf">                 
+  <executable name="dist/default/debug/alarma_micros.debug.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>66704</length>                 
-      <used>7468</used>                     
-      <free>59236</free>                     
+      <used>5832</used>                     
+      <free>60872</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
-      <length>16384</length>                 
-      <used>260</used>                     
-      <free>16124</free>                     
+      <length>16896</length>                 
+      <used>2276</used>                     
+      <free>14620</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

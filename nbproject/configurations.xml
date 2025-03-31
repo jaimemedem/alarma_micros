@@ -10,6 +10,8 @@
       <itemPath>Temporizador.h</itemPath>
       <itemPath>Pir.h</itemPath>
       <itemPath>buzzer.h</itemPath>
+      <itemPath>TimerUtils.h</itemPath>
+      <itemPath>gestionUART.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -29,10 +31,12 @@
       <itemPath>UartCol.c</itemPath>
       <itemPath>main_pruebaUART.c</itemPath>
       <itemPath>Temporizador.c</itemPath>
-      <itemPath>mainpruebaArmado.c</itemPath>
       <itemPath>Pir.c</itemPath>
       <itemPath>buzzer.c</itemPath>
       <itemPath>teclado.c</itemPath>
+      <itemPath>TimerUtils.c</itemPath>
+      <itemPath>gestionUART.c</itemPath>
+      <itemPath>main_pruebaSerLEDUART.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -224,6 +228,22 @@
         <property key="firmware.download.all" value="false"/>
       </Tool>
       <item path="main_pruebaServo.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="main_pruebaUART.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>

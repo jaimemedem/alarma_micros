@@ -1,57 +1,38 @@
-/* 
- * File:   Temporizador.c
- * Author: andre
- *
- * Created on 10 de febrero de 2025, 9:43
- */
-
 #include "Temporizador.h"
 #include <xc.h>
 
-static uint32_t ticks = 0, ticks3=0; // Variable global al driver
-void InicializarTimer2(void) {
-    T2CON = 0x0000;
-    TMR2 = 0;
-    PR2 = 4999; // Se configura el timer para que termine la cuenta en 1 s
-    IPC2bits.T2IP = 2; // Se configura la prioridad de la interrupción
-    IPC2bits.T2IS = 0; // Subprioridad 0
-    IFS0bits.T2IF = 0; // Se borra el flag de interrupción por si estaba pendiente
-    IEC0bits.T2IE = 1; // y por último se habilita su interrupción
-    T2CON = 0x0070; // Se arranca el timer con prescalado 1:256
+static volatile uint32_t ticks = 0;
+
+void InicializarTimer1(void) {
+    T1CON = 0x0000;
+    TMR1 = 0;
+
+    // Para Fcy = 5 MHz, prescaler 256 ? PR1 = 19531 para 1s
+    PR1 = 19531;
+
+    IPC1bits.T1IP = 2;
+    IPC1bits.T1IS = 0;
+    IFS0bits.T1IF = 0;
+    IEC0bits.T1IE = 1;
+
+    T1CON = 0x8030; // TCKPS = 0b11 (1:256), Timer ON
 }
 
-void startTimer2(void){
-    T2CON |= 0x8000; // Se arranca el timer con prescalado 1
+void startTimer1(void) {
+    TMR1 = 0;
+    T1CONbits.ON = 1;
 }
-__attribute__((vector(_TIMER_2_VECTOR), interrupt(IPL2SOFT), nomips16)) void
-InterrupcionTimer2(void) {
-    // Se borra el flag de interrupción
-    IFS0bits.T2IF = 0;
-    ticks ++;
+
+void reiniciarTicks(void) {
+    ticks = 0;
 }
+
 uint32_t getTicks(void) {
     return ticks;
 }
 
-void InicializarTimer3(void) {
-    T3CON = 0x0000;
-    TMR3 = 0;
-    PR3 = 4999; // Se configura el timer para que termine la cuenta en 1 ms
-    IPC3bits.T3IP = 4; // Se configura la prioridad de la interrupción
-    IPC3bits.T3IS = 0; // Subprioridad 0
-    IFS0bits.T3IF = 0; // Se borra el flag de interrupción por si estaba pendiente
-    IEC0bits.T3IE = 1; // y por último se habilita su interrupción
-    T3CON = 0x8000; // Se arranca el timer con prescalado 1
+__attribute__((vector(_TIMER_1_VECTOR), interrupt(IPL2SOFT), nomips16))
+void InterrupcionTimer1(void) {
+    IFS0bits.T1IF = 0;
+    ticks++;
 }
-
-__attribute__((vector(_TIMER_3_VECTOR), interrupt(IPL4SOFT), nomips16)) void
-InterrupcionTimer3(void) {
-    // Se borra el flag de interrupción
-    IFS0bits.T3IF = 0;
-    ticks3 ++;
-}
-
-uint32_t getTicks3(void) {
-    return ticks3;
-}
-

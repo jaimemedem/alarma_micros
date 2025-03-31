@@ -1,4 +1,5 @@
 #include <xc.h>
+#include "Pir.h"
 
 //El sensor se alimenta con 3,3V
 //Tiene otra toma GND
@@ -8,5 +9,10 @@
 
 void initPIR(void){
     ANSELA &= ~(1 << LECTURAS_PIR);
-    TRISA |= ~(1 << LECTURAS_PIR);
+    TRISA |= (1 << LECTURAS_PIR);
+}
+
+uint8_t leerPIR(void){
+    int lectura=(PORTA>>LECTURAS_PIR)&1;
+    return lectura;
 }

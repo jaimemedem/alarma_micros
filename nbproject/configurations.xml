@@ -8,6 +8,8 @@
       <itemPath>Servo.h</itemPath>
       <itemPath>UartCol.h</itemPath>
       <itemPath>Temporizador.h</itemPath>
+      <itemPath>Pir.h</itemPath>
+      <itemPath>buzzer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -218,6 +220,9 @@
       <PK3OBPlatformTool>
         <property key="firmware.download.all" value="false"/>
       </PK3OBPlatformTool>
+      <Tool>
+        <property key="firmware.download.all" value="false"/>
+      </Tool>
       <item path="main_pruebaServo.c" ex="true" overriding="false">
         <C32>
         </C32>

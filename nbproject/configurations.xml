@@ -37,6 +37,7 @@
       <itemPath>TimerUtils.c</itemPath>
       <itemPath>gestionUART.c</itemPath>
       <itemPath>main_pruebaSerLEDUART.c</itemPath>
+      <itemPath>main_pruebaPIR.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -227,6 +228,8 @@
       <Tool>
         <property key="firmware.download.all" value="false"/>
       </Tool>
+      <item path="main_pruebaSerLEDUART.c" ex="true" overriding="false">
+      </item>
       <item path="main_pruebaServo.c" ex="true" overriding="false">
         <C32>
         </C32>

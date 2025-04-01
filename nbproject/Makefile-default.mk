@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaSerLEDUART.c
+SOURCEFILES_QUOTED_IF_SPACED=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaPIR.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaSerLEDUART.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Servo.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/UartCol.o.d ${OBJECTDIR}/Temporizador.o.d ${OBJECTDIR}/Pir.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/teclado.o.d ${OBJECTDIR}/TimerUtils.o.d ${OBJECTDIR}/gestionUART.o.d ${OBJECTDIR}/main_pruebaSerLEDUART.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaPIR.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Servo.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/UartCol.o.d ${OBJECTDIR}/Temporizador.o.d ${OBJECTDIR}/Pir.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/teclado.o.d ${OBJECTDIR}/TimerUtils.o.d ${OBJECTDIR}/gestionUART.o.d ${OBJECTDIR}/main_pruebaPIR.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaSerLEDUART.o
+OBJECTFILES=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaPIR.o
 
 # Source Files
-SOURCEFILES=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaSerLEDUART.c
+SOURCEFILES=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaPIR.c
 
 
 
@@ -155,11 +155,11 @@ ${OBJECTDIR}/gestionUART.o: gestionUART.c  .generated_files/flags/default/3a1de0
 	@${RM} ${OBJECTDIR}/gestionUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/gestionUART.o.d" -o ${OBJECTDIR}/gestionUART.o gestionUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main_pruebaSerLEDUART.o: main_pruebaSerLEDUART.c  .generated_files/flags/default/2b34fbef873c832a7da8075dcf39a48772b1443c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/main_pruebaPIR.o: main_pruebaPIR.c  .generated_files/flags/default/80d8d1a8833ac1090eb4e7d50a49067866aa958d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main_pruebaSerLEDUART.o.d 
-	@${RM} ${OBJECTDIR}/main_pruebaSerLEDUART.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaSerLEDUART.o.d" -o ${OBJECTDIR}/main_pruebaSerLEDUART.o main_pruebaSerLEDUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/main_pruebaPIR.o.d 
+	@${RM} ${OBJECTDIR}/main_pruebaPIR.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaPIR.o.d" -o ${OBJECTDIR}/main_pruebaPIR.o main_pruebaPIR.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
 ${OBJECTDIR}/Servo.o: Servo.c  .generated_files/flags/default/24d9f870f7ebae17ea38b39859e12f0f50b248fd .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
@@ -216,11 +216,11 @@ ${OBJECTDIR}/gestionUART.o: gestionUART.c  .generated_files/flags/default/154b79
 	@${RM} ${OBJECTDIR}/gestionUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/gestionUART.o.d" -o ${OBJECTDIR}/gestionUART.o gestionUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main_pruebaSerLEDUART.o: main_pruebaSerLEDUART.c  .generated_files/flags/default/7a25144e398441850f7630ce9518b6e63feba53a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/main_pruebaPIR.o: main_pruebaPIR.c  .generated_files/flags/default/7ef0b61f36a5ca144d75329bec2d727582cb24b0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main_pruebaSerLEDUART.o.d 
-	@${RM} ${OBJECTDIR}/main_pruebaSerLEDUART.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaSerLEDUART.o.d" -o ${OBJECTDIR}/main_pruebaSerLEDUART.o main_pruebaSerLEDUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/main_pruebaPIR.o.d 
+	@${RM} ${OBJECTDIR}/main_pruebaPIR.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaPIR.o.d" -o ${OBJECTDIR}/main_pruebaPIR.o main_pruebaPIR.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

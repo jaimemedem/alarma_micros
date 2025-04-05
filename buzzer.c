@@ -5,8 +5,8 @@
 
 // PWM Configuración
 #define PWM_FREQ_HZ 2000         // 2 kHz
-#define SYSCLK 40000000UL        // Reloj del sistema
-#define PRESCALER 8
+#define SYSCLK 5000000UL        // Reloj del sistema
+#define PRESCALER 1
 #define PR3_VAL ((SYSCLK / PRESCALER) / PWM_FREQ_HZ)
 
 void initBuzzer(void) {
@@ -26,7 +26,7 @@ void initBuzzer(void) {
     T3CON = 0;
     TMR3 = 0;
     PR3 = PR3_VAL - 1;
-    T3CON = 0x8010; // Preescalador 8, Timer ON
+    T3CON = 0x8000; // Preescalador 1, Timer ON
 
     // Configura OC2 para PWM
     OC2CON = 0;

@@ -1,86 +1,56 @@
 #include <xc.h>
-#include "gestionUART.h"
 #include "Servo.h"
-#include "Temporizador.h"
+#include "gestionUART.h"
+#include "TimerUtils.h"
 
-#define LED_RC4_MASK (1 << 4)
-#define LED_RC5_MASK (1 << 5)
-#define PIN_PULSADOR 5
-
-uint32_t lastTicks = 0;
-int modoParpadeo = 0;
-
-void configurarIO(void);
-void manejarPulsador(int *ant);
-void actualizarParpadeoLED(void);
+#define _XTAL_FREQ 5000000  // Frecuencia de reloj actualizada a 5MHz
 
 int main(void) {
-    configurarIO();
+    // Inicializar el UART y el sistema (habilita interrupciones, etc.)
     inicializarUARTySistema();
+    
+    // Inicializar el servo (configura PWM y timer)
     inicializaServo();
-    setAngulo(90);     // Forzar ángulo abierto
-    abrirPuerta();
+    
+    // Configurar RA9 y RA8 como salidas digitales para los LEDs
+    TRISAbits.TRISA9 = 0;  // RA9 como salida
+    TRISAbits.TRISA8 = 0;  // RA8 como salida
+    // Como los LEDs son activos a nivel bajo, se asigna 1 para apagarlos
+    LATAbits.LATA9 = 1;    // LED en RA9 apagado
+    LATAbits.LATA8 = 1;    // LED en RA8 apagado
 
-    LATC |= LED_RC4_MASK; // Apagar LED RC4
-    LATC |= LED_RC5_MASK; // Apagar LED RC5
-
-    int ant = (PORTB >> PIN_PULSADOR) & 1;
+    // Variable para detectar cambios en el estado recibido por UART
+    int ultimoEstado = -1;
 
     while (1) {
+        // Procesa la entrada UART (lee caracteres, arma el comando y lo procesa)
         manejarUART();
 
-        if (estadoSistema) {
-            LATC &= ~LED_RC5_MASK;  // Encender RC5 (activo bajo)
-            manejarPulsador(&ant);
-        } else {
-            // Estado OFF ? reset
-            LATC |= LED_RC4_MASK;   // Apagar RC4
-            LATC |= LED_RC5_MASK;   // Apagar RC5
-            modoParpadeo = 0;
-            T1CONbits.ON = 0;       // Detener Timer1
-            reiniciarTicks();
-            setAngulo(90);
-            abrirPuerta();
+        // Cuando se reciba un comando nuevo (estadoSistema = 1 para ON o 0 para OFF)
+        if ((estadoSistema == 1 || estadoSistema == 0) && (estadoSistema != ultimoEstado)) {
+            if (estadoSistema == 1) {
+                // Comando ON:
+                // - Encender LED conectado en RA9 (activo a nivel bajo: poner en 0)
+                // - Asegurar que el LED en RA8 permanezca apagado (poner en 1)
+                // - Cerrar la puerta (mover el servo hasta el ángulo mínimo)
+                LATAbits.LATA9 = 0;   // LED RA9 encendido
+                LATAbits.LATA8 = 1;   // LED RA8 apagado
+                cerrarPuerta();
+                putsUART("\r\nEstado: ON - Puerta cerrada, LED RA9 encendido, LED RA8 apagado\r\n");
+            } else if (estadoSistema == 0) {
+                // Comando OFF:
+                // - Abrir la puerta (mover el servo hasta el ángulo máximo)
+                // - Apagar LED en RA9 (poner en 1)
+                // - Encender LED en RA8 (poner en 0, por ser activo a nivel bajo)
+                LATAbits.LATA9 = 1;   // LED RA9 apagado
+                LATAbits.LATA8 = 0;   // LED RA8 encendido
+                abrirPuerta();
+                putsUART("\r\nEstado: OFF - Puerta abierta, LED RA9 apagado, LED RA8 encendido\r\n");
+            }
+            // Actualiza el último estado procesado para evitar reejecución innecesaria
+            ultimoEstado = estadoSistema;
         }
-
-        actualizarParpadeoLED();
     }
-
+    
     return 0;
-}
-
-void configurarIO(void) {
-    // LEDs como salidas digitales
-    ANSELC &= ~(LED_RC4_MASK | LED_RC5_MASK);
-    TRISC &= ~(LED_RC4_MASK | LED_RC5_MASK);
-    LATC |= (LED_RC4_MASK | LED_RC5_MASK); // Apagar (activo bajo)
-
-    // Pulsador RB5 como entrada
-    ANSELB &= ~(1 << PIN_PULSADOR);
-    TRISB |= (1 << PIN_PULSADOR);
-
-    InicializarTimer1(); // Timer1 para parpadeo (ajustado a 5 MHz)
-}
-
-void manejarPulsador(int *ant) {
-    int act = (PORTB >> PIN_PULSADOR) & 1;
-
-    if (act != *ant && act == 0) { // Flanco de bajada
-        cerrarPuerta();
-        modoParpadeo = 1;
-        reiniciarTicks();
-        startTimer1(); // Inicia parpadeo en RC4
-    }
-
-    *ant = act;
-}
-
-void actualizarParpadeoLED(void) {
-    if (modoParpadeo) {
-        uint32_t current = getTicks();
-        if (current > lastTicks) {
-            LATC ^= LED_RC4_MASK;
-            lastTicks = current;
-        }
-    }
 }

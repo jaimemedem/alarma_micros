@@ -3,10 +3,10 @@
 
 #include <stdint.h>
 
-// Inicializa el teclado matricial
+// Inicializa el teclado
 void initKeypad(void);
 
-// Lee una tecla (retorna carácter '0'-'9', '*', '#', o 0 si ninguna)
+// Devuelve la tecla pulsada o 0 si no hay ninguna
 char leerTecla(void);
 
 #endif

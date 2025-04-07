@@ -40,6 +40,7 @@
       <itemPath>main_pruebaSerLEDUART.c</itemPath>
       <itemPath>main_pruebaPIR.c</itemPath>
       <itemPath>main_pruebaBuzzer.c</itemPath>
+      <itemPath>main_pruebaTECLADO.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -55,7 +56,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PK3OBPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.45</languageToolchainVersion>
+        <languageToolchainVersion>4.35</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -230,7 +231,37 @@
       <Tool>
         <property key="firmware.download.all" value="false"/>
       </Tool>
+      <item path="main_pruebaBuzzer.c" ex="false" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <item path="main_pruebaPIR.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaSerLEDUART.c" ex="true" overriding="false">
         <C32>
@@ -249,6 +280,22 @@
         </C32Global>
       </item>
       <item path="main_pruebaServo.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="main_pruebaTECLADO.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>

@@ -2,9 +2,11 @@
 #define BUZZER_H
 
 #include <stdint.h>
+#include <xc.h>
+#include "Pic32Ini.h"
 
-void initBuzzer(void);
-void activarBuzzer(void);
-void apagarBuzzer(void);
+void inicializar_bocina(void);
+void sonar(void);
+void parar_bocina(void);
 
 #endif // BUZZER_H

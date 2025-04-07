@@ -1,3 +1,3 @@
-build/default/production/buzzer.o: buzzer.c buzzer.h
+build/default/production/buzzer.o: buzzer.c Pic32Ini.h
 
-buzzer.h:
+Pic32Ini.h:

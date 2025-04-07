@@ -1,44 +1,40 @@
 #include <xc.h>
-#include "buzzer.h"
+#include "Pic32Ini.h"
 
-#define BUZZER_PIN 14  // Pin RB14 (RPB14)
+#define PIN_BOCINA 1  // RA0
+#define PERIODO 7999  // Calculado para 5 kHz, sin prescaler
 
-// PWM Configuración
-#define PWM_FREQ_HZ 2000         // 2 kHz
-#define SYSCLK 5000000UL        // Reloj del sistema
-#define PRESCALER 1
-#define PR3_VAL ((SYSCLK / PRESCALER) / PWM_FREQ_HZ)
+void inicializar_bocina(void);
+void sonar(void);
+void parar_bocina(void);
 
-void initBuzzer(void) {
-    // Desactiva la función analógica del pin RB14
-    ANSELB &= ~(1 << BUZZER_PIN);
-    
-    // Configura RB14 como salida digital
-    TRISB &= ~(1 << BUZZER_PIN);
+void inicializar_bocina(void) {
+    ANSELA &= ~(1 << PIN_BOCINA);  // RA0 digital
+    TRISA &= ~(1 << PIN_BOCINA);   // RA0 salida
 
-    // Mapear OC2 a RPB14
+    // Remapear OC2 a RA1
     SYSKEY = 0xAA996655;
     SYSKEY = 0x556699AA;
-    RPB14R = 5; // OC2
+    RPA1R = 5; // OC2 en RA1
     SYSKEY = 0x1CA11CA1;
 
-    // Configura Timer3 para 2kHz
-    T3CON = 0;
-    TMR3 = 0;
-    PR3 = PR3_VAL - 1;
-    T3CON = 0x8000; // Preescalador 1, Timer ON
+    // Configurar Timer3 sin prescaler
+    T3CON = 0;          // Stop y reset Timer3
+    TMR3 = 0;           // Reset contador
+    PR3 = PERIODO;      // PWM periodo (para 5 kHz)
+    T3CON = 0x8000;     // Prescaler 1:1, Timer ON
 
-    // Configura OC2 para PWM
+    // Configurar OC2 para usar Timer3
     OC2CON = 0;
-    OC2R = PR3_VAL / 2;   // Ciclo de trabajo 50%
-    OC2RS = PR3_VAL / 2;
-    OC2CON = 0x8006; // PWM mode sin fallos
+    OC2R = 0;
+    OC2RS = 0;
+    OC2CON = 0x800E; // PWM sin sincronización, usa Timer3
 }
 
-void activarBuzzer(void) {
-    OC2CONSET = 0x8000; // Activa OC2
+void parar_bocina(void) {
+    OC2RS = 0;
 }
 
-void apagarBuzzer(void) {
-    OC2CONCLR = 0x8000; // Desactiva OC2
+void sonar(void) {
+    OC2RS = (PERIODO * 50) / 100;  // 50% ciclo útil
 }

@@ -39,6 +39,7 @@
       <itemPath>gestionUART.c</itemPath>
       <itemPath>main_pruebaSerLEDUART.c</itemPath>
       <itemPath>main_pruebaPIR.c</itemPath>
+      <itemPath>main_pruebaBuzzer.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -54,7 +55,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PK3OBPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.35</languageToolchainVersion>
+        <languageToolchainVersion>4.45</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -229,6 +230,8 @@
       <Tool>
         <property key="firmware.download.all" value="false"/>
       </Tool>
+      <item path="main_pruebaPIR.c" ex="true" overriding="false">
+      </item>
       <item path="main_pruebaSerLEDUART.c" ex="true" overriding="false">
         <C32>
         </C32>

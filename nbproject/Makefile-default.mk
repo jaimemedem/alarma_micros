@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaPIR.c
+SOURCEFILES_QUOTED_IF_SPACED=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaBuzzer.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaPIR.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Servo.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/UartCol.o.d ${OBJECTDIR}/Temporizador.o.d ${OBJECTDIR}/Pir.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/teclado.o.d ${OBJECTDIR}/TimerUtils.o.d ${OBJECTDIR}/gestionUART.o.d ${OBJECTDIR}/main_pruebaPIR.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaBuzzer.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Servo.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/UartCol.o.d ${OBJECTDIR}/Temporizador.o.d ${OBJECTDIR}/Pir.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/teclado.o.d ${OBJECTDIR}/TimerUtils.o.d ${OBJECTDIR}/gestionUART.o.d ${OBJECTDIR}/main_pruebaBuzzer.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaPIR.o
+OBJECTFILES=${OBJECTDIR}/Servo.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/UartCol.o ${OBJECTDIR}/Temporizador.o ${OBJECTDIR}/Pir.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/teclado.o ${OBJECTDIR}/TimerUtils.o ${OBJECTDIR}/gestionUART.o ${OBJECTDIR}/main_pruebaBuzzer.o
 
 # Source Files
-SOURCEFILES=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaPIR.c
+SOURCEFILES=Servo.c Pic32Ini.c UartCol.c Temporizador.c Pir.c buzzer.c teclado.c TimerUtils.c gestionUART.c main_pruebaBuzzer.c
 
 
 
@@ -101,126 +101,126 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Servo.o: Servo.c  .generated_files/flags/default/c2b409c7ab312bd2c6fb865e76ba2bdf699f451e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Servo.o: Servo.c  .generated_files/flags/default/cc5edf2b4bfdd1bcdc65d05c25c1cbaa8c973d10 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Servo.o.d 
 	@${RM} ${OBJECTDIR}/Servo.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Servo.o.d" -o ${OBJECTDIR}/Servo.o Servo.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/flags/default/97c83e7428fbbfab86bffb89294e881e044e5b93 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/flags/default/d283681bb805a93f45ed8f046b8347b96b8bc53e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/UartCol.o: UartCol.c  .generated_files/flags/default/e6ba9b2cea89cee546f89fb322efb18b8f0c3a7d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/UartCol.o: UartCol.c  .generated_files/flags/default/a7a4df5e12e15e73ee01d93b267208e81e699e81 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UartCol.o.d 
 	@${RM} ${OBJECTDIR}/UartCol.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/UartCol.o.d" -o ${OBJECTDIR}/UartCol.o UartCol.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Temporizador.o: Temporizador.c  .generated_files/flags/default/d9fae823e797fd66aaaee991efe3dff7bb61e966 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Temporizador.o: Temporizador.c  .generated_files/flags/default/3a7f0c602776a7a94c83f0bfc51f1599d006c4b5 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Temporizador.o.d 
 	@${RM} ${OBJECTDIR}/Temporizador.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Temporizador.o.d" -o ${OBJECTDIR}/Temporizador.o Temporizador.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pir.o: Pir.c  .generated_files/flags/default/e60902a039cd123b00f6846b494f63cecca8b5e1 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Pir.o: Pir.c  .generated_files/flags/default/391ab411e9a008cf32460d366e55ba7a3a640f45 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pir.o.d 
 	@${RM} ${OBJECTDIR}/Pir.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Pir.o.d" -o ${OBJECTDIR}/Pir.o Pir.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/buzzer.o: buzzer.c  .generated_files/flags/default/70c1429b56aebb9b0cdd9ea33bf8ea728fc92574 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/buzzer.o: buzzer.c  .generated_files/flags/default/408648c7fbe366a3248af28cfff535192df43736 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/buzzer.o.d 
 	@${RM} ${OBJECTDIR}/buzzer.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/buzzer.o.d" -o ${OBJECTDIR}/buzzer.o buzzer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/teclado.o: teclado.c  .generated_files/flags/default/5e4c3eeb8074a9ac3069f9048d1e7d89e034b816 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/teclado.o: teclado.c  .generated_files/flags/default/52f15a281e343f71f85ff297409ca26d5369f5d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/teclado.o.d 
 	@${RM} ${OBJECTDIR}/teclado.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/teclado.o.d" -o ${OBJECTDIR}/teclado.o teclado.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/TimerUtils.o: TimerUtils.c  .generated_files/flags/default/1c286d238ee7b09f95602f5d6120a90d29596498 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/TimerUtils.o: TimerUtils.c  .generated_files/flags/default/403720fec35d0fa1c2bed1ff5d3b748640aec3a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/TimerUtils.o.d 
 	@${RM} ${OBJECTDIR}/TimerUtils.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/TimerUtils.o.d" -o ${OBJECTDIR}/TimerUtils.o TimerUtils.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/gestionUART.o: gestionUART.c  .generated_files/flags/default/1e4d012546afc1e75339e797af4f06a10dc855e6 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/gestionUART.o: gestionUART.c  .generated_files/flags/default/b2c18ddb7cbbb384d6f6616f0ae5e85e90271b0d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/gestionUART.o.d 
 	@${RM} ${OBJECTDIR}/gestionUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/gestionUART.o.d" -o ${OBJECTDIR}/gestionUART.o gestionUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main_pruebaPIR.o: main_pruebaPIR.c  .generated_files/flags/default/8547873527c77add1aba8dbb6529404bc7b67b5d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/main_pruebaBuzzer.o: main_pruebaBuzzer.c  .generated_files/flags/default/bd00c760a8fcb301e51c6c81d8efa5a3fba38df6 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main_pruebaPIR.o.d 
-	@${RM} ${OBJECTDIR}/main_pruebaPIR.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaPIR.o.d" -o ${OBJECTDIR}/main_pruebaPIR.o main_pruebaPIR.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/main_pruebaBuzzer.o.d 
+	@${RM} ${OBJECTDIR}/main_pruebaBuzzer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaBuzzer.o.d" -o ${OBJECTDIR}/main_pruebaBuzzer.o main_pruebaBuzzer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/Servo.o: Servo.c  .generated_files/flags/default/b80ba932734eb07724f597f207e0147d44aea63c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Servo.o: Servo.c  .generated_files/flags/default/cb9f83d9f766cc2f897da867fb53535410b3d974 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Servo.o.d 
 	@${RM} ${OBJECTDIR}/Servo.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Servo.o.d" -o ${OBJECTDIR}/Servo.o Servo.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/flags/default/95dc0b2a5cf049abc210d7afa1fd9724f2ba0ef5 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/flags/default/eb301ed2409ad0ac4d367978ea55df04e3e3f301 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/UartCol.o: UartCol.c  .generated_files/flags/default/6bed5b2975b09ef49e7e0bf230d9095398ff5336 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/UartCol.o: UartCol.c  .generated_files/flags/default/2d5bf919b4e29d13ba9feed4d2d83d7984de6d53 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UartCol.o.d 
 	@${RM} ${OBJECTDIR}/UartCol.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/UartCol.o.d" -o ${OBJECTDIR}/UartCol.o UartCol.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Temporizador.o: Temporizador.c  .generated_files/flags/default/f871b3e9d545a0b5c82fa7b6f6a3155c58a14c5e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Temporizador.o: Temporizador.c  .generated_files/flags/default/bbd6803bcf873d8567a4ae0157a5bda80c35719e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Temporizador.o.d 
 	@${RM} ${OBJECTDIR}/Temporizador.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Temporizador.o.d" -o ${OBJECTDIR}/Temporizador.o Temporizador.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pir.o: Pir.c  .generated_files/flags/default/85eddc094626b29a59ec62479e31b1a6591abda8 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/Pir.o: Pir.c  .generated_files/flags/default/b11252107df9836d1ec6da62d6ca3db2e806811f .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pir.o.d 
 	@${RM} ${OBJECTDIR}/Pir.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/Pir.o.d" -o ${OBJECTDIR}/Pir.o Pir.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/buzzer.o: buzzer.c  .generated_files/flags/default/757494f166fbb3e6d88b68504c3239cd9dcba6c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/buzzer.o: buzzer.c  .generated_files/flags/default/6cc0370d6f0f3ce7e57b59bb48f4ec41bf7d12a7 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/buzzer.o.d 
 	@${RM} ${OBJECTDIR}/buzzer.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/buzzer.o.d" -o ${OBJECTDIR}/buzzer.o buzzer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/teclado.o: teclado.c  .generated_files/flags/default/78324b2d90a9369d6c3033f2544807308e04a0a7 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/teclado.o: teclado.c  .generated_files/flags/default/c6771d9263b25c055214c43a79321eb962d913eb .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/teclado.o.d 
 	@${RM} ${OBJECTDIR}/teclado.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/teclado.o.d" -o ${OBJECTDIR}/teclado.o teclado.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/TimerUtils.o: TimerUtils.c  .generated_files/flags/default/8b72d4dc221a7f7c2f30ded1c587cc359de64e3a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/TimerUtils.o: TimerUtils.c  .generated_files/flags/default/a1ef32be2efcaae37d03e47ac053137b8c1b0fa0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/TimerUtils.o.d 
 	@${RM} ${OBJECTDIR}/TimerUtils.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/TimerUtils.o.d" -o ${OBJECTDIR}/TimerUtils.o TimerUtils.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/gestionUART.o: gestionUART.c  .generated_files/flags/default/b8d522c41a1bef38370809835d5f40d38753148e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/gestionUART.o: gestionUART.c  .generated_files/flags/default/13798d09d53aa60b612d849cda3f013d5bb0cd7e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/gestionUART.o.d 
 	@${RM} ${OBJECTDIR}/gestionUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/gestionUART.o.d" -o ${OBJECTDIR}/gestionUART.o gestionUART.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main_pruebaPIR.o: main_pruebaPIR.c  .generated_files/flags/default/c5ffe1dae6ffdc3b48b69ef5713a21cd1a5fed .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/main_pruebaBuzzer.o: main_pruebaBuzzer.c  .generated_files/flags/default/ae78058dfb0d157c42fe8dbf4e55fa2b3e6d62b7 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main_pruebaPIR.o.d 
-	@${RM} ${OBJECTDIR}/main_pruebaPIR.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaPIR.o.d" -o ${OBJECTDIR}/main_pruebaPIR.o main_pruebaPIR.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/main_pruebaBuzzer.o.d 
+	@${RM} ${OBJECTDIR}/main_pruebaBuzzer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main_pruebaBuzzer.o.d" -o ${OBJECTDIR}/main_pruebaBuzzer.o main_pruebaBuzzer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

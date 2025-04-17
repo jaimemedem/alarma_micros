@@ -2,8 +2,20 @@ Servo: + en placa, gnd en placa, PWM en RB15. FUNCIONAL
 UART: + en placa, gnd en placa, TX/RX, TX,RX. FUNCIONAL
 Sensor PIR: + en placa gnd en plca, Sensor en RA7 FUNCIONAL
 Buzzer: PWM en RA1, gnd en pin FUNCIONAL
-Led Rojo: RA9, activo nivel bajo
-Led Amarillo: RA8, activo nivel bajo
+Led Rojo: RC1, activo nivel bajo
+Led Amarillo: RC0, activo nivel bajo
 Leds tienen un gnd común
 
-TECLADO =>> Por integrar todavía
+TECLADO =>> Falla columna 2, el resto perfecto
+Las columnas están conectadas de la siguiente manera:
+
+C1: RB2
+C2: RC5
+C3: RA0
+
+Las filas tienen las siguientes conexiones:
+
+F1: RC6
+F2: RC7
+F3: RC8
+F4: RC9

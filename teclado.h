@@ -1,12 +1,15 @@
 #ifndef TECLADO_H
 #define TECLADO_H
 
-#include <stdint.h>
+// Inicializa las líneas de filas y columnas
+void teclado_init(void);
 
-// Inicializa el teclado
-void initKeypad(void);
+// Devuelve 0 si no hay tecla, o el carácter de la tecla pulsada
+// con antirrebote y evitando múltiples. No bloqueante: si detecta
+// una pulsación válida, espera a que se suelte antes de devolverla.
+char teclado_getKey(void);
 
-// Devuelve la tecla pulsada o 0 si no hay ninguna
-char leerTecla(void);
+// Bloqueante: espera hasta que se pulse y suelte una tecla, y devuelve su carácter
+char teclado_waitKey(void);
 
-#endif
+#endif // TECLADO_H

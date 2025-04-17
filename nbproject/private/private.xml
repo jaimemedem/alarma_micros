@@ -3,23 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/gestionUART.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/Temporizador.c</file>
+            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaLED.c</file>
+            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaBuzzerTec.c</file>
             <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaPIR.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/Pic32Ini.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaBuzzer.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaSerLEDUART.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/UartCol.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaTODOsinTEC.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/TimerUtils.c</file>
+            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/teclado.h</file>
             <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaTECLADO.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/buzzer.h</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/buzzer.c</file>
             <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaServo.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/Servo.c</file>
+            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/main_pruebaTODOsinTEC.c</file>
             <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/gestionUART.h</file>
+            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/Servo.c</file>
             <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/teclado.c</file>
-            <file>file:/C:/Users/andre/Desktop/Universidad/ICAI/3/2CUATRI/Micros/Lab/alarma_micros/Pir.c</file>
         </group>
     </open-files>
 </project-private>

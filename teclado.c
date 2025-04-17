@@ -1,85 +1,104 @@
+// teclado.c
+
 #include <xc.h>
+#include <stdint.h>
 #include "teclado.h"
+#include "TimerUtils.h"  // para esperar_ms()
 
-// === Pines definidos por el usuario ===
+// -- Pin mappings --
+#define COL1_LAT    LATBbits.LATB2
+#define COL2_LAT    LATCbits.LATC5
+#define COL3_LAT    LATAbits.LATA0
 
-// FILAS (entradas digitales): RC6 ? RC9
-#define FILAS_PORT   PORTC
-#define FILAS_TRIS   TRISC
-#define FILAS_ANSEL  ANSELC
-#define FILAS_MASK   ((1 << 6) | (1 << 7) | (1 << 8) | (1 << 9))
+#define COL1_TRIS   TRISBbits.TRISB2
+#define COL2_TRIS   TRISCbits.TRISC5
+#define COL3_TRIS   TRISAbits.TRISA0
 
-// COLUMNAS (salidas digitales): RB3, RB2, RA1
-#define COL1_LAT LATB
-#define COL1_TRIS TRISB
-#define COL1_ANSEL ANSELB
-#define COL1_BIT 3
+// Lectura de filas RC6..RC9 ? bits 0..3
+#define ROWS_PORT   ((PORTC >> 6) & 0x0F)
 
-#define COL2_LAT LATB
-#define COL2_TRIS TRISB
-#define COL2_ANSEL ANSELB
-#define COL2_BIT 2
-
-#define COL3_LAT LATA
-#define COL3_TRIS TRISA
-#define COL3_ANSEL ANSELA
-#define COL3_BIT 1
-
-// Mapa de teclas [fila][columna]
+// Mapa de teclas filas×columnas
 static const char mapaTeclas[4][3] = {
-    {'1', '2', '3'},
-    {'4', '5', '6'},
-    {'7', '8', '9'},
-    {'A', '0', 'B'}
+    {'1','2','3'},
+    {'4','5','6'},
+    {'7','8','9'},
+    {'A','0','B'}
 };
 
-void initKeypad(void) {
-    // Configurar filas como entradas digitales
-    FILAS_ANSEL &= ~FILAS_MASK;
-    FILAS_TRIS  |= FILAS_MASK;
+// Tiempo de antirrebote (ms)
+#define DEBOUNCE_MS 20
 
-    // Configurar columnas como salidas digitales
-    COL1_ANSEL &= ~(1 << COL1_BIT);
-    COL1_TRIS  &= ~(1 << COL1_BIT);
-    COL1_LAT   |=  (1 << COL1_BIT);
+void teclado_init(void) {
+    // Deshabilitar funciones analógicas en pines usados
+    ANSELB &= ~(1 << 2);                   // RB2 (columna 1)
+    ANSELC &= (uint16_t)~((1 << 5)         // RC5 (columna 2)
+                       | (1 << 6)         // RC6?RC9 (filas)
+                       | (1 << 7)
+                       | (1 << 8)
+                       | (1 << 9));
+    ANSELA &= ~(1 << 0);                   // RA0 (columna 3)
 
-    COL2_ANSEL &= ~(1 << COL2_BIT);
-    COL2_TRIS  &= ~(1 << COL2_BIT);
-    COL2_LAT   |=  (1 << COL2_BIT);
+    // Columnas como salidas, nivel alto (inactivo)
+    COL1_TRIS = 0; COL1_LAT = 1;
+    COL2_TRIS = 0; COL2_LAT = 1;
+    COL3_TRIS = 0; COL3_LAT = 1;
 
-    COL3_ANSEL &= ~(1 << COL3_BIT);
-    COL3_TRIS  &= ~(1 << COL3_BIT);
-    COL3_LAT   |=  (1 << COL3_BIT);
+    // Filas como entradas (pull?up externas)
+    TRISCbits.TRISC6 = 1;
+    TRISCbits.TRISC7 = 1;
+    TRISCbits.TRISC8 = 1;
+    TRISCbits.TRISC9 = 1;
 }
 
-char leerTecla(void) {
-    // Columnas y sus LATs
-    volatile unsigned int *lats[3] = { &COL1_LAT, &COL2_LAT, &COL3_LAT };
-    uint8_t bits[3] = { COL1_BIT, COL2_BIT, COL3_BIT };
+// Escanea columnas y devuelve 0 si no hay tecla válida,
+// o el carácter pulsado.
+static char scanKey(void) {
+    for (uint8_t col = 0; col < 3; col++) {
+        // Poner todas las columnas en nivel alto (inactivo)
+        COL1_LAT = COL2_LAT = COL3_LAT = 1;
 
-    for (int col = 0; col < 3; col++) {
-        // Poner la columna actual en 0 y las otras en 1
-        for (int i = 0; i < 3; i++) {
-            if (i == col)
-                *(lats[i]) &= ~(1 << bits[i]);
-            else
-                *(lats[i]) |= (1 << bits[i]);
-        }
+        // Bajar solo la columna actual
+        if      (col == 0) COL1_LAT = 0;
+        else if (col == 1) COL2_LAT = 0;
+        else               COL3_LAT = 0;
 
-        // Espera para estabilizar
-        for (volatile int d = 0; d < 100; d++);
+        __asm__ volatile("nop");
+        __asm__ volatile("nop");
 
-        // Leer filas (RC6 a RC9 ? bits 6 a 9)
-        for (int fila = 0; fila < 4; fila++) {
-            if (!((FILAS_PORT >> (6 + fila)) & 1)) {
-                // Anti-rebote: esperar a que se suelte
-                while (!((FILAS_PORT >> (6 + fila)) & 1));
-                for (volatile int d = 0; d < 5000; d++);
-
-                return mapaTeclas[fila][col];
+        uint8_t pressed = (~ROWS_PORT) & 0x0F;  // 1 = tecla pulsada
+        if (pressed) {
+            // Si más de una fila, ignorar
+            if ((pressed & (pressed - 1)) == 0) {
+                uint8_t row = __builtin_ctz(pressed);
+                // Restaurar columnas antes de salir
+                COL1_LAT = COL2_LAT = COL3_LAT = 1;
+                return mapaTeclas[row][col];
             }
+            break;
         }
     }
-
+    // Restaurar columnas
+    COL1_LAT = COL2_LAT = COL3_LAT = 1;
     return 0;
+}
+
+char teclado_getKey(void) {
+    char k = scanKey();
+    if (k) {
+        esperar_ms(DEBOUNCE_MS);
+        if (scanKey() == k) {
+            // Esperar a que se suelte
+            while (scanKey() == k);
+            return k;
+        }
+    }
+    return 0;
+}
+
+char teclado_waitKey(void) {
+    char k;
+    do {
+        k = teclado_getKey();
+    } while (!k);
+    return k;
 }

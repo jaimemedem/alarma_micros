@@ -22,10 +22,10 @@ int main(void) {
 
         if (estadoActual != estadoAnterior) {
             if (estadoActual) {
-                LATC &= ~LED_RC4_MASK;
+                LATC &= ~0x1;
                 putsUART("Movimiento detectado\r\n");
             } else {
-                LATC |= LED_RC4_MASK;
+                LATC |= 0x1;
                 putsUART("Sin movimiento\r\n");
             }
 

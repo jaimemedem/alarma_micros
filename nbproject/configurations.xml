@@ -41,6 +41,7 @@
       <itemPath>main_pruebaPIR.c</itemPath>
       <itemPath>main_pruebaBuzzer.c</itemPath>
       <itemPath>main_pruebaTECLADO.c</itemPath>
+      <itemPath>main_pruebaTODOsinTEC.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -231,7 +232,7 @@
       <Tool>
         <property key="firmware.download.all" value="false"/>
       </Tool>
-      <item path="main_pruebaBuzzer.c" ex="false" overriding="false">
+      <item path="main_pruebaBuzzer.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>

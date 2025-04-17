@@ -1,0 +1,9 @@
+Servo: + en placa, gnd en placa, PWM en RB15. FUNCIONAL
+UART: + en placa, gnd en placa, TX/RX, TX,RX. FUNCIONAL
+Sensor PIR: + en placa gnd en plca, Sensor en RA7 FUNCIONAL
+Buzzer: PWM en RA1, gnd en pin FUNCIONAL
+Led Rojo: RA9, activo nivel bajo
+Led Amarillo: RA8, activo nivel bajo
+Leds tienen un gnd común
+
+TECLADO =>> Por integrar todavía

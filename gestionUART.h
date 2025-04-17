@@ -6,6 +6,7 @@
 
 // Variable global que indica si el sistema está activo (1) u OFF (0)
 extern int estadoSistema;
+extern int desactivacion;
 
 // Inicializa UART y sistema base
 void inicializarUARTySistema(void);

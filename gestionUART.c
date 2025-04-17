@@ -12,6 +12,7 @@ static int comandoIndex = 0;
 
 // Variable de estado accesible desde fuera
 int estadoSistema = 0; // Por defecto OFF
+int desactivacion = 0; //Para gestionar desactivacion por UART
 
 void inicializarUARTySistema(void) {
     // UART
@@ -65,6 +66,11 @@ void procesarComando(void) {
         estadoSistema = 0;
         putsUART("\r\nSISTEMA DESACTIVADO (OFF)\r\n");
 
+    } else if (strcmp(comando, "1234") == 0) {
+        desactivacion = 1;
+        putsUART("\r\nContraseña Correcta\r\n");
+        putsUART("\r\nSISTEMA DESACTIVADO (OFF)\r\n");
+        
     } else {
         putsUART("\r\nCOMANDO NO VALIDO (usar ON/OFF)\r\n");
     }

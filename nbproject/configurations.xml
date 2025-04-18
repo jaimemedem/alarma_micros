@@ -45,6 +45,7 @@
       <itemPath>main_pruebaLED.c</itemPath>
       <itemPath>main_pruebaBuzzerTec.c</itemPath>
       <itemPath>main_pruebaPIRSERVOBUZZ.c</itemPath>
+      <itemPath>main_pruebaFULL.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -120,9 +121,6 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32>
-      <C32-AR>
-        <property key="additional-options-chop-files" value="false"/>
-      </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
         <property key="enable-symbols" value="true"/>
@@ -216,6 +214,19 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
+      <C32Global>
+        <property key="common-include-directories" value=""/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="true"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="stack-smashing" value=""/>
+        <property key="wpo-lto" value="false"/>
+      </C32Global>
       <PK3OBPlatformTool>
         <property key="firmware.download.all" value="false"/>
       </PK3OBPlatformTool>
@@ -225,8 +236,6 @@
       <item path="main_pruebaBuzzer.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -235,14 +244,26 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaBuzzerTec.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaLED.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -251,12 +272,12 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaPIR.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -265,12 +286,26 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="main_pruebaPIRSERVOBUZZ.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaSerLEDUART.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -279,12 +314,12 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaServo.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -293,12 +328,12 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaTECLADO.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -307,12 +342,12 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaTODOsinTEC.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -321,12 +356,12 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="main_pruebaUART.c" ex="true" overriding="false">
         <C32>
         </C32>
-        <C32-AR>
-        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -335,6 +370,8 @@
         </C32-LD>
         <C32CPP>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
     </conf>
   </confs>

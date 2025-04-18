@@ -1,40 +1,53 @@
-// main_pruebaPIR.c
-
+// main.c
 #include <xc.h>
-#include "Pic32Ini.h"   // configuraciones de sistema
+#include "Pic32Ini.h"   // Configuración del PIC
 #include "Pir.h"        // initPIR(), leerPIR()
 #include "Servo.h"      // inicializaServo(), abrirPuerta(), cerrarPuerta()
 #include "buzzer.h"     // inicializar_bocina(), sonar(), parar_bocina()
 #include "TimerUtils.h" // esperar_ms()
 
-// Deshabilitar JTAG para liberar RB2/RB3 si fuera necesario
+// Si tu PIR saca '1' al detectar movimiento, déjalo a 1;
+// si es activo bajo, cámbialo aquí a 0.
+#define PIR_DETECT_LEVEL 1
+#define PIR_FILTER_MS     50   // antirrebote / filtrado de PIR
 
 int main(void) {
-    // --- Desactivar JTAG en tiempo de ejecución (alternativa al pragma) ---
+    // Desactiva JTAG para liberar todos los pines de I/O
+    DDPCONbits.JTAGEN = 0;
 
-    // Inicializar periféricos
-    inicializar_bocina();   // configura PWM de buzzer
-    initPIR();              // configura PIN RA7 para sensor PIR
-    inicializaServo();      // configura OC1 y Timer2 para servo
+    // Inicializa módulos
+    initPIR();
+    inicializaServo();
+    inicializar_bocina();
 
     // Estado inicial: puerta abierta y buzzer apagado
     abrirPuerta();
     parar_bocina();
 
-    while (1) {
-        // leerPIR() devuelve 0 cuando detecta movimiento
-        if (leerPIR()) {
-            // Intrusión detectada
-            cerrarPuerta();
-            sonar();
-        } else {
-            // No hay intrusión
-            abrirPuerta();
-            parar_bocina();
-        }
+    // Lee el estado inicial del PIR
+    uint8_t prevPir = leerPIR();
 
-        // Pequeña pausa para evitar rebotes y no saturar el bus
-        esperar_ms(100);
+    while (1) {
+        // Lee PIR y filtra cambios
+        uint8_t pir = leerPIR();
+        if (pir != prevPir) {
+            // Ha cambiado: espera un poco y confirma
+            esperar_ms(PIR_FILTER_MS);
+            if (leerPIR() == pir) {
+                prevPir = pir;
+                if (prevPir == PIR_DETECT_LEVEL) {
+                    // Movimiento detectado
+                    cerrarPuerta();
+                    sonar();
+                } else {
+                    // Vuelta a reposo
+                    abrirPuerta();
+                    parar_bocina();
+                }
+            }
+        }
+        // Pequeño retardo para no saturar el bucle
+        esperar_ms(10);
     }
 
     return 0;

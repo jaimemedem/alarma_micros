@@ -46,6 +46,7 @@
       <itemPath>main_pruebaBuzzerTec.c</itemPath>
       <itemPath>main_pruebaPIRSERVOBUZZ.c</itemPath>
       <itemPath>main_pruebaFULL.c</itemPath>
+      <itemPath>main_FINAL.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -121,6 +122,9 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32>
+      <C32-AR>
+        <property key="additional-options-chop-files" value="false"/>
+      </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
         <property key="enable-symbols" value="true"/>
@@ -236,6 +240,8 @@
       <item path="main_pruebaBuzzer.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -250,6 +256,8 @@
       <item path="main_pruebaBuzzerTec.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -264,6 +272,8 @@
       <item path="main_pruebaLED.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -278,6 +288,8 @@
       <item path="main_pruebaPIR.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -292,6 +304,8 @@
       <item path="main_pruebaPIRSERVOBUZZ.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -306,6 +320,8 @@
       <item path="main_pruebaSerLEDUART.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -320,6 +336,8 @@
       <item path="main_pruebaServo.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -334,6 +352,8 @@
       <item path="main_pruebaTECLADO.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -348,6 +368,8 @@
       <item path="main_pruebaTODOsinTEC.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>
@@ -362,6 +384,8 @@
       <item path="main_pruebaUART.c" ex="true" overriding="false">
         <C32>
         </C32>
+        <C32-AR>
+        </C32-AR>
         <C32-AS>
         </C32-AS>
         <C32-CO>

@@ -237,6 +237,8 @@
       <Tool>
         <property key="firmware.download.all" value="false"/>
       </Tool>
+      <item path="main_FINAL.c" ex="true" overriding="false">
+      </item>
       <item path="main_pruebaBuzzer.c" ex="true" overriding="false">
         <C32>
         </C32>

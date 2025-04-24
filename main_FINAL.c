@@ -1,142 +1,142 @@
-// main.c
+/* 
+ * File:   main_pruebaFULL.c
+ * Author: andre
+ *
+ * Created on 17 de abril de 2025, 20:27
+ */
+
 #include <xc.h>
 #include <string.h>
-#include "Pic32Ini.h"      // PIC setup
-#include "gestionUART.h"   // UART command handling
-#include "UartCol.h"       // putsUART, putcUART
-#include "Pir.h"           // initPIR, leerPIR
-#include "Servo.h"         // inicializaServo, abrirPuerta, cerrarPuerta
-#include "buzzer.h"        // inicializar_bocina, sonar, parar_bocina
-#include "TimerUtils.h"    // esperar_ms
-#include "teclado.h"       // teclado_init, teclado_getKey
+#include "Pic32Ini.h"
+#include "gestionUART.h"
+#include "UartCol.h"
+#include "Pir.h"
+#include "Servo.h"
+#include "buzzer.h"
+#include "TimerUtils.h"
+#include "teclado.h"
 
-// LED ámbar (bit 0) y rojo (bit 1) en PORTC, activos bajo
-#define LED_AMBER_MASK  (1 << 0)
-#define LED_RED_MASK    (1 << 1)
+// LEDs en RC0 (ámbar) y RC1 (rojo), activos a nivel bajo
+#define LED_AMBER_MASK   0x1   // bit 0
+#define LED_RED_MASK     0x2   // bit 1
 
-// Códigos de desarme por teclado
+// Códigos de 4 dígitos para desactivar
 #define CODE_DIS_SCAN   "4467"
 #define CODE_DIS_ALARM  "1134"
 #define CODE_LEN        4
 
-// PIR
-#define PIR_ACTIVE      1        // nivel activo
-#define PIR_DEBOUNCE_MS 50       // ms de filtrado
+// Parámetros PIR
+#define PIR_ACTIVE      1
+#define PIR_DEBOUNCE_MS 50
 
-// Parpadeo en ALARM cada 2 s
-#define BLINK_MS        2000    
-
-typedef enum { STANDBY, SCANNING, ALARM } state_t;
+typedef enum { STATE_STANDBY, STATE_SCANNING, STATE_ALARM } system_state_t;
 
 int main(void) {
-    // liberar JTAG
-    DDPCONbits.JTAGEN = 0;
+    DDPCONbits.JTAGEN = 0;               // libera JTAG
+    inicializarUARTySistema();           // UART + mensaje inicial
+    initPIR();                           // configura RA7
+    inicializaServo();                   // PWM servo RB15
+    inicializar_bocina();                // PWM buzzer RA1
+    teclado_init();                      // teclado 4×3
 
-    // init módulos
-    inicializarUARTySistema();
-    initPIR();
-    inicializaServo();
-    inicializar_bocina();
-    teclado_init();
-
-    // configurar RC0/RC1 como digitales y salidas
+    // Configurar RC0/RC1 como salidas digitales y apagarlos
     ANSELC &= ~(LED_AMBER_MASK | LED_RED_MASK);
     TRISC  &= ~(LED_AMBER_MASK | LED_RED_MASK);
-    // apagar LEDs (alto = apagado)
-    LATC |= (LED_AMBER_MASK | LED_RED_MASK);
+    LATC  |=  (LED_AMBER_MASK | LED_RED_MASK);
 
-    // estado inicial
     abrirPuerta();
     parar_bocina();
 
-    state_t state = STANDBY, prev = -1;
-    char buf[CODE_LEN+1]; int idx = 0;
+    system_state_t state = STATE_STANDBY, prev_state = -1;
+    char keybuf[CODE_LEN+1];
+    int  keyidx = 0;
     uint8_t pir_last = leerPIR();
 
     while (1) {
-        // ? UART ?
+        // UART
         manejarUART();
         if (desactivacion) {
-            estadoSistema = 0; desactivacion = 0;
+            estadoSistema = 0;
+            desactivacion  = 0;
             putsUART("\r\n> Desarmado por UART\r\n");
         }
 
-        // ? PIR con filtrado ?
+        // PIR con filtrado
         uint8_t pir = leerPIR();
         if (pir != pir_last) {
             esperar_ms(PIR_DEBOUNCE_MS);
             if (leerPIR() == pir) pir_last = pir;
         }
 
-        // ? Teclado ?
-        if (char k = teclado_getKey()) {
+        // Teclado
+        char k = teclado_getKey();
+        if (k) {
             putcUART(k);
-            buf[idx++] = k;
-            if (idx >= CODE_LEN) {
-                buf[CODE_LEN] = '\0';
-                if (state == SCANNING && strcmp(buf, CODE_DIS_SCAN) == 0) {
-                    estadoSistema = 0; putsUART("\r\n> Desarmado por teclado\r\n");
+            keybuf[keyidx++] = k;
+            if (keyidx >= CODE_LEN) {
+                keybuf[CODE_LEN] = '\0';
+                if (state==STATE_SCANNING && strcmp(keybuf, CODE_DIS_SCAN)==0) {
+                    estadoSistema=0; putsUART("\r\n> Desarmado por teclado\r\n");
                 }
-                if (state == ALARM && strcmp(buf, CODE_DIS_ALARM) == 0) {
-                    estadoSistema = 0; putsUART("\r\n> Desarmado en alarma\r\n");
+                if (state==STATE_ALARM && strcmp(keybuf, CODE_DIS_ALARM)==0) {
+                    estadoSistema=0; putsUART("\r\n> Desarmado en alarma\r\n");
                 }
-                memmove(buf, buf+1, CODE_LEN-1);
-                idx = CODE_LEN-1;
+                memmove(keybuf, keybuf+1, CODE_LEN-1);
+                keyidx = CODE_LEN-1;
             }
         }
 
-        // ? Transiciones ?
+        // Transiciones
         switch (state) {
-            case STANDBY:
-                if (estadoSistema) state = SCANNING;
+            case STATE_STANDBY:
+                if (estadoSistema) state = STATE_SCANNING;
                 break;
-            case SCANNING:
-                if (!estadoSistema) state = STANDBY;
-                else if (pir_last == PIR_ACTIVE) state = ALARM;
+            case STATE_SCANNING:
+                if (!estadoSistema) state = STATE_STANDBY;
+                else if (pir_last == PIR_ACTIVE) state = STATE_ALARM;
                 break;
-            case ALARM:
-                if (!estadoSistema) state = STANDBY;
+            case STATE_ALARM:
+                if (!estadoSistema) state = STATE_STANDBY;
                 break;
         }
 
-        // ? Entrada en nuevo estado ?
-        if (state != prev) {
+        // Acciones al entrar en estado nuevo
+        if (state != prev_state) {
             switch (state) {
-                case STANDBY:
-                    // apagar todo y reset
-                    LATC |= (LED_AMBER_MASK | LED_RED_MASK);
+                case STATE_STANDBY:
+                    LATC |=  (LED_AMBER_MASK | LED_RED_MASK);
                     parar_bocina();
                     abrirPuerta();
-                    idx = 0; pir_last = leerPIR();
+                    keyidx = 0;
+                    pir_last = leerPIR();
                     break;
-                case SCANNING:
-                    // encender ámbar
+                case STATE_SCANNING:
                     LATC &= ~LED_AMBER_MASK;
-                    putsUART("\r\n> Sistema ARMADO y ESCANEANDO\r\n");
+                    putsUART("\r\n> Sistema ACTIVADO y ESCANEANDO\r\n");
                     abrirPuerta();
-                    idx = 0;
+                    keyidx = 0;
                     break;
-                case ALARM:
-                    // ámbar ON + cerrar puerta
+                case STATE_ALARM:
                     LATC &= ~LED_AMBER_MASK;
-                    putsUART("\r\n¡Intruso! Cerrando puerta...\r\n");
+                    putsUART("\r\n¡Intruso detectado! Cerrando puerta...\r\n");
                     cerrarPuerta();
-                    idx = 0;
+                    keyidx = 0;
                     break;
             }
         }
 
-        // ? Continuo en ALARM: parpadeo lento ?
-        if (state == ALARM) {
-            LATC &= ~LED_RED_MASK;   // rojo ON
+        // Parpadeo en ALARM cada 500 ms (ahora visible)
+        if (state == STATE_ALARM) {
+            LATC &= ~LED_RED_MASK;
             sonar();
-            esperar_ms(BLINK_MS);
-            LATC |= LED_RED_MASK;    // rojo OFF
+            esperar_ms(500);
+            LATC |=  LED_RED_MASK;
             parar_bocina();
-            esperar_ms(BLINK_MS);
+            esperar_ms(500);
         }
 
-        prev = state;
+        prev_state = state;
     }
+
     return 0;
 }
